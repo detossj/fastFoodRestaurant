@@ -34,8 +34,7 @@ const TopBar = () => {
   const isAuthActive = activeAuthPaths.includes(pathname)
   const isPerfilActive = activePerfilPaths.includes(pathname)
 
-
-  const baseLinkClass = "flex items-center gap-2 transition-colors duration-200 cursor-pointer font-medium"
+  const baseLinkClass = "flex items-center gap-2 transition-colors duration-200 cursor-pointer font-semibold"
   const activeClass = "text-[#f97c2f]"
   const inactiveClass = "text-black hover:text-[#f97c2f]"
 
