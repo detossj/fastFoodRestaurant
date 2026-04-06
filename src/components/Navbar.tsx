@@ -48,7 +48,7 @@ const Navbar = () => {
   };
 
   // Clases base compartidas para evitar repetición en los Links
-  const baseLinkClasses = "px-3 py-1.5 rounded-[15px] transition-colors duration-200 cursor-pointer block lg:inline-block text-center";
+  const baseLinkClasses = "px-3 py-1.5 rounded-[15px] transition-colors duration-200 cursor-pointer block lg:inline-block text-center font-semibold";
 
   // Objeto de configuración para TanStack Router Link
   const activeProps = { className: "bg-[#f97c2f] text-white" };
