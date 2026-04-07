@@ -11,7 +11,16 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PublicRouteImport } from './routes/_public'
 import { Route as PublicIndexRouteImport } from './routes/_public.index'
+import { Route as PublicRegisterRouteImport } from './routes/_public.register'
+import { Route as PublicPromocionesRouteImport } from './routes/_public.promociones'
+import { Route as PublicPostresRouteImport } from './routes/_public.postres'
+import { Route as PublicPizzasRouteImport } from './routes/_public.pizzas'
 import { Route as PublicLoginRouteImport } from './routes/_public.login'
+import { Route as PublicLocalesRouteImport } from './routes/_public.locales'
+import { Route as PublicHamburguesasRouteImport } from './routes/_public.hamburguesas'
+import { Route as PublicExtrasRouteImport } from './routes/_public.extras'
+import { Route as PublicBebidasRouteImport } from './routes/_public.bebidas'
+import { Route as PublicAcompanamientosRouteImport } from './routes/_public.acompanamientos'
 
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
@@ -22,32 +31,139 @@ const PublicIndexRoute = PublicIndexRouteImport.update({
   path: '/',
   getParentRoute: () => PublicRoute,
 } as any)
+const PublicRegisterRoute = PublicRegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicPromocionesRoute = PublicPromocionesRouteImport.update({
+  id: '/promociones',
+  path: '/promociones',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicPostresRoute = PublicPostresRouteImport.update({
+  id: '/postres',
+  path: '/postres',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicPizzasRoute = PublicPizzasRouteImport.update({
+  id: '/pizzas',
+  path: '/pizzas',
+  getParentRoute: () => PublicRoute,
+} as any)
 const PublicLoginRoute = PublicLoginRouteImport.update({
   id: '/login',
   path: '/login',
   getParentRoute: () => PublicRoute,
 } as any)
+const PublicLocalesRoute = PublicLocalesRouteImport.update({
+  id: '/locales',
+  path: '/locales',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicHamburguesasRoute = PublicHamburguesasRouteImport.update({
+  id: '/hamburguesas',
+  path: '/hamburguesas',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicExtrasRoute = PublicExtrasRouteImport.update({
+  id: '/extras',
+  path: '/extras',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicBebidasRoute = PublicBebidasRouteImport.update({
+  id: '/bebidas',
+  path: '/bebidas',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicAcompanamientosRoute = PublicAcompanamientosRouteImport.update({
+  id: '/acompanamientos',
+  path: '/acompanamientos',
+  getParentRoute: () => PublicRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof PublicIndexRoute
+  '/acompanamientos': typeof PublicAcompanamientosRoute
+  '/bebidas': typeof PublicBebidasRoute
+  '/extras': typeof PublicExtrasRoute
+  '/hamburguesas': typeof PublicHamburguesasRoute
+  '/locales': typeof PublicLocalesRoute
   '/login': typeof PublicLoginRoute
+  '/pizzas': typeof PublicPizzasRoute
+  '/postres': typeof PublicPostresRoute
+  '/promociones': typeof PublicPromocionesRoute
+  '/register': typeof PublicRegisterRoute
 }
 export interface FileRoutesByTo {
+  '/acompanamientos': typeof PublicAcompanamientosRoute
+  '/bebidas': typeof PublicBebidasRoute
+  '/extras': typeof PublicExtrasRoute
+  '/hamburguesas': typeof PublicHamburguesasRoute
+  '/locales': typeof PublicLocalesRoute
   '/login': typeof PublicLoginRoute
+  '/pizzas': typeof PublicPizzasRoute
+  '/postres': typeof PublicPostresRoute
+  '/promociones': typeof PublicPromocionesRoute
+  '/register': typeof PublicRegisterRoute
   '/': typeof PublicIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_public': typeof PublicRouteWithChildren
+  '/_public/acompanamientos': typeof PublicAcompanamientosRoute
+  '/_public/bebidas': typeof PublicBebidasRoute
+  '/_public/extras': typeof PublicExtrasRoute
+  '/_public/hamburguesas': typeof PublicHamburguesasRoute
+  '/_public/locales': typeof PublicLocalesRoute
   '/_public/login': typeof PublicLoginRoute
+  '/_public/pizzas': typeof PublicPizzasRoute
+  '/_public/postres': typeof PublicPostresRoute
+  '/_public/promociones': typeof PublicPromocionesRoute
+  '/_public/register': typeof PublicRegisterRoute
   '/_public/': typeof PublicIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login'
+  fullPaths:
+    | '/'
+    | '/acompanamientos'
+    | '/bebidas'
+    | '/extras'
+    | '/hamburguesas'
+    | '/locales'
+    | '/login'
+    | '/pizzas'
+    | '/postres'
+    | '/promociones'
+    | '/register'
   fileRoutesByTo: FileRoutesByTo
-  to: '/login' | '/'
-  id: '__root__' | '/_public' | '/_public/login' | '/_public/'
+  to:
+    | '/acompanamientos'
+    | '/bebidas'
+    | '/extras'
+    | '/hamburguesas'
+    | '/locales'
+    | '/login'
+    | '/pizzas'
+    | '/postres'
+    | '/promociones'
+    | '/register'
+    | '/'
+  id:
+    | '__root__'
+    | '/_public'
+    | '/_public/acompanamientos'
+    | '/_public/bebidas'
+    | '/_public/extras'
+    | '/_public/hamburguesas'
+    | '/_public/locales'
+    | '/_public/login'
+    | '/_public/pizzas'
+    | '/_public/postres'
+    | '/_public/promociones'
+    | '/_public/register'
+    | '/_public/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -70,6 +186,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicIndexRouteImport
       parentRoute: typeof PublicRoute
     }
+    '/_public/register': {
+      id: '/_public/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof PublicRegisterRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/promociones': {
+      id: '/_public/promociones'
+      path: '/promociones'
+      fullPath: '/promociones'
+      preLoaderRoute: typeof PublicPromocionesRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/postres': {
+      id: '/_public/postres'
+      path: '/postres'
+      fullPath: '/postres'
+      preLoaderRoute: typeof PublicPostresRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/pizzas': {
+      id: '/_public/pizzas'
+      path: '/pizzas'
+      fullPath: '/pizzas'
+      preLoaderRoute: typeof PublicPizzasRouteImport
+      parentRoute: typeof PublicRoute
+    }
     '/_public/login': {
       id: '/_public/login'
       path: '/login'
@@ -77,16 +221,69 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicLoginRouteImport
       parentRoute: typeof PublicRoute
     }
+    '/_public/locales': {
+      id: '/_public/locales'
+      path: '/locales'
+      fullPath: '/locales'
+      preLoaderRoute: typeof PublicLocalesRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/hamburguesas': {
+      id: '/_public/hamburguesas'
+      path: '/hamburguesas'
+      fullPath: '/hamburguesas'
+      preLoaderRoute: typeof PublicHamburguesasRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/extras': {
+      id: '/_public/extras'
+      path: '/extras'
+      fullPath: '/extras'
+      preLoaderRoute: typeof PublicExtrasRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/bebidas': {
+      id: '/_public/bebidas'
+      path: '/bebidas'
+      fullPath: '/bebidas'
+      preLoaderRoute: typeof PublicBebidasRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/acompanamientos': {
+      id: '/_public/acompanamientos'
+      path: '/acompanamientos'
+      fullPath: '/acompanamientos'
+      preLoaderRoute: typeof PublicAcompanamientosRouteImport
+      parentRoute: typeof PublicRoute
+    }
   }
 }
 
 interface PublicRouteChildren {
+  PublicAcompanamientosRoute: typeof PublicAcompanamientosRoute
+  PublicBebidasRoute: typeof PublicBebidasRoute
+  PublicExtrasRoute: typeof PublicExtrasRoute
+  PublicHamburguesasRoute: typeof PublicHamburguesasRoute
+  PublicLocalesRoute: typeof PublicLocalesRoute
   PublicLoginRoute: typeof PublicLoginRoute
+  PublicPizzasRoute: typeof PublicPizzasRoute
+  PublicPostresRoute: typeof PublicPostresRoute
+  PublicPromocionesRoute: typeof PublicPromocionesRoute
+  PublicRegisterRoute: typeof PublicRegisterRoute
   PublicIndexRoute: typeof PublicIndexRoute
 }
 
 const PublicRouteChildren: PublicRouteChildren = {
+  PublicAcompanamientosRoute: PublicAcompanamientosRoute,
+  PublicBebidasRoute: PublicBebidasRoute,
+  PublicExtrasRoute: PublicExtrasRoute,
+  PublicHamburguesasRoute: PublicHamburguesasRoute,
+  PublicLocalesRoute: PublicLocalesRoute,
   PublicLoginRoute: PublicLoginRoute,
+  PublicPizzasRoute: PublicPizzasRoute,
+  PublicPostresRoute: PublicPostresRoute,
+  PublicPromocionesRoute: PublicPromocionesRoute,
+  PublicRegisterRoute: PublicRegisterRoute,
   PublicIndexRoute: PublicIndexRoute,
 }
 
