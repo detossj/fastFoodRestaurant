@@ -1,7 +1,10 @@
+import PromotionsList from "@/components/promociones/PromotionsList"
 
 const Promociones = () => {
   return (
-    <div>Promociones</div>
+    <>
+      <PromotionsList/>
+    </>
   )
 }
 
