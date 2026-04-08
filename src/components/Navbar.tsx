@@ -2,8 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import { Link } from "@tanstack/react-router";
 import { ShoppingCart, Menu, X } from "lucide-react";
 import logo from "../assets/images/logo.webp";
+import { useCartStore } from "@/stores/useCartStore";
 //import Cart from "./Cart";
-//import { useCartStore } from "../store/cartStore";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -11,7 +11,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // const totalItems = useCartStore((state) => state.totalItems);
+  const totalItems = useCartStore((state) => state.getTotalItems());
 
   // Detectar Scroll para mostrar/ocultar el logo
   useEffect(() => {
@@ -77,7 +77,7 @@ const Navbar = () => {
               aria-label="Abrir carrito"
             >
               <ShoppingCart className="w-[22px] h-[22px]" />
-              {/* <span className="text-lg font-medium leading-none">{totalItems}</span> */}
+              <span className="text-lg font-medium leading-none">{totalItems}</span>
             </button>
 
             <button
