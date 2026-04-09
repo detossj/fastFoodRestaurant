@@ -5,7 +5,7 @@ import type { Promocion } from '@/services/fastFoodRestaurantService';
 import { Button } from '@/components/ui/button';
 import { DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Minus, Plus } from 'lucide-react';
-import api_url from '@/config/axiosConfig';
+import { api_url_images } from '@/config/axiosConfig';
 
 
 interface PromotionModalProps {
@@ -42,7 +42,7 @@ export default function PromotionModal({ promotion, close }: PromotionModalProps
       <div className="w-full px-4 pt-4 sm:px-6 sm:pt-6">
         {promotion.image_url ? (
           <img
-            src={`${api_url}/storage/${promotion.image_url}`}
+            src={`${api_url_images}/storage/${promotion.image_url}`}
             alt={promotion.name}
             className="w-full max-w-[700px] aspect-video object-cover mx-auto rounded-2xl shadow-sm"
           />
