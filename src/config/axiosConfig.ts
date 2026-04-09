@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL
 
+
 const api_url = axios.create({
   baseURL: API_URL,
   headers: {
@@ -9,4 +10,7 @@ const api_url = axios.create({
   },
 });
 
+const api_url_images = import.meta.env.VITE_API_IMAGES;
+
 export default api_url;
+export { api_url_images };
