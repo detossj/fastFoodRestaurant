@@ -1,4 +1,4 @@
-import api_url from "@/config/axiosConfig";
+import { api_url_images } from "@/config/axiosConfig";
 import type { Promocion } from '@/services/fastFoodRestaurantService';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -19,7 +19,7 @@ export default function PromotionCard({ promotion, onClick }: PromotionCardProps
       <div className="aspect-video w-full overflow-hidden bg-gray-100">
         {promotion.image_url ? (
           <img 
-            src={`${api_url}/storage${promotion.image_url}`}
+            src={`${api_url_images}/storage${promotion.image_url}`}
             alt={promotion.name}
             className="w-full h-full object-cover"
             loading="lazy"
