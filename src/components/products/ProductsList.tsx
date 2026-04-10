@@ -38,17 +38,28 @@ export default function ProductsList({ id }: ProductsListProps) {
   };
 
   return (
-    <div className="container mx-auto min-h-screen p-5">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div className="container mx-auto min-h-screen px-8 py-5">
+        <div className="mb-8 flex flex-col items-center justify-center text-center">
+            
+            <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-0 leading-none">
+                Pizzas
+            </h1>
+
+            <p className="text-gray-500 dark:text-gray-400 max-w-2xl text-lg text-center -mt-2">
+                Deliciosas pizzas artesanales con ingredientes frescos y masas crujientes.
+            </p>
+
+        </div>
         
-        
-        {products?.map((product) => (
-            <ProductCard
-              key={product.id} 
-              product={product} 
-              onClick={(e) => showModal(e, product)} 
-            />
-        ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {products?.map((product) => (
+                <ProductCard
+                key={product.id} 
+                product={product} 
+                onClick={(e) => showModal(e, product)} 
+                />
+            ))}
+        </div>
         
         {selectedProduct && (
           <ProductModal 
@@ -60,7 +71,7 @@ export default function ProductsList({ id }: ProductsListProps) {
             }} 
           />
         )}
-      </div>
+      
     </div>
   );
 }
