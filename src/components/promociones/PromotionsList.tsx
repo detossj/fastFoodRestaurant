@@ -29,7 +29,7 @@ export default function PromotionsList() {
 
   return (
     <>
-      <div className="container mx-auto px-8 md:px-16 pt-6">
+      <div className="container mx-auto px-8 py-5">
         <div className="mb-8 flex flex-col items-center justify-center text-center">
           
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-2">
