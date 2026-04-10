@@ -1,9 +1,8 @@
 import React from 'react';
-import { Card, CardContent, CardFooter } from '@/components/ui/card'; // Ajusta la ruta de Shadcn
-import { Button } from '@/components/ui/button'; // Ajusta la ruta de Shadcn
+import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { api_url_images } from '@/config/axiosConfig';
 import type { Product } from '@/services/fastFoodRestaurantService';
-
 
 interface ProductCardProps {
   product: Product;
@@ -11,17 +10,17 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product, onClick }: ProductCardProps) => {
-    const priceNumber = typeof product.price === 'string' ? parseFloat(product.price) : product.price;
-    const formattedPrice = Math.trunc(priceNumber).toLocaleString('es-CL');
+  const priceNumber = typeof product.price === 'string' ? parseFloat(product.price) : product.price;
+  const formattedPrice = Math.trunc(priceNumber).toLocaleString('es-CL');
 
   return (
-    <Card className="w-[260px] h-[450px] flex flex-col rounded-2xl border-[#f0f0f0] shadow-[0_10px_30px_rgba(0,0,0,0.05)] overflow-hidden">
+    <Card className="h-full flex flex-col rounded-2xl border-[#f0f0f0] shadow-[0_10px_30px_rgba(0,0,0,0.05)] overflow-hidden">
       
-      <div className="w-full flex justify-center items-center bg-gray-50">
+      <div className="w-full shrink-0 bg-gray-50 flex justify-center items-center">
         <img 
           src={`${api_url_images}/storage${product.image_url}`}
           alt={product.name}
-          className="w-full h-[200px] object-cover"
+          className="w-full h-[300px] object-cover"
           loading="lazy"
           decoding="async"
           width="260"
@@ -29,10 +28,11 @@ const ProductCard = ({ product, onClick }: ProductCardProps) => {
         />
       </div>
 
-      <CardContent className="flex-1 flex flex-col justify-center p-3 mt-3">
-        <h5 className="font-bold text-center text-lg leading-tight">{product.name}</h5>
+      <CardContent className="flex-1 flex flex-col p-4 pt-5">
+        <h5 className="font-bold text-center text-lg leading-tight">
+          {product.name}
+        </h5>
         
-
         <p className="text-muted-foreground text-center text-sm mt-3 line-clamp-3">
           {product.description ?? 'Sin descripción disponible.'}
         </p>
