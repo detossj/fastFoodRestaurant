@@ -1,8 +1,11 @@
+import ProductsList from "@/components/products/ProductsList"
 
 
 const Pizzas = () => {
   return (
-    <div>Pizzas</div>
+      <>
+        <ProductsList id={1}/>
+      </>
   )
 }
 
