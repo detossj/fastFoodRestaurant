@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dialog"; 
 import { Button } from "@/components/ui/button"; 
 import type { Product } from '@/services/fastFoodRestaurantService';
+import { api_url_images } from '@/config/axiosConfig';
 
 
 interface ProductModalProps {
@@ -57,7 +58,7 @@ const ProductModal = ({ product, open, onOpenChange }: ProductModalProps) => {
 
         <div className="flex flex-col items-center pt-2">
           <img
-            src={`storage/${product.image_url}`} 
+            src={`${api_url_images}/storage${product.image_url}`}
             alt={product.name}
             className="w-full max-w-[300px] aspect-square object-cover block mx-auto rounded-2xl shadow-sm"
           />
