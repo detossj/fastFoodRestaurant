@@ -29,7 +29,7 @@ export default function PromotionsList() {
 
   return (
     <>
-      <div className="container mx-auto px-4 md:px-6 pt-6">
+      <div className="container mx-auto px-8 md:px-16 pt-6">
         <div className="mb-8 flex flex-col items-center justify-center text-center">
           
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-2">
@@ -43,7 +43,7 @@ export default function PromotionsList() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 pb-12">
+      <div className="container mx-auto px-8 md:px-18 pb-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {promotions?.map((promotion) => (
             <PromotionCard 
