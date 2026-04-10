@@ -1,7 +1,10 @@
+import ProductsList from "@/components/products/ProductsList"
 
 const Acompañamientos = () => {
   return (
-    <div>Acompañamientos</div>
+    <>
+      <ProductsList id={3}/>
+    </>
   )
 }
 
