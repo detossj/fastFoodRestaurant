@@ -1,7 +1,10 @@
+import ProductsList from "@/components/products/ProductsList"
 
 const Extras = () => {
   return (
-    <div>Extras</div>
+    <>
+      <ProductsList id={6}/>
+    </>
   )
 }
 
