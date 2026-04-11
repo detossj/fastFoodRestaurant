@@ -23,7 +23,15 @@ export interface Product {
     category_id: number;
     created_at?: string; 
     updated_at?: string; 
-  }
+}
+
+export interface Category {
+    id: number;
+    name: string;
+    description?: string | null; 
+    created_at?: string; 
+    updated_at?: string; 
+}
 
 export const getPromociones = async (): Promise<Promocion[]> => {
     try {
@@ -49,3 +57,17 @@ export const getProducts = async (categoria: string): Promise<Product[]> => {
         throw error;
     }
 };
+
+export const getCategories = async (id: string): Promise<Category> => {
+    try {
+        const response = await api_url.get<Category>('/categories', {
+            params: {
+                id: id
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error cargando las categorias:", error);
+        throw error;
+    }
+}
