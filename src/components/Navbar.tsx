@@ -55,21 +55,23 @@ const Navbar = () => {
   const inactiveProps = { className: "text-foreground hover:bg-gray-200 hover:text-[#fa6306]" };
 
   return (
-    <div className="sticky top-0 z-[999] bg-background border-b border-border md:p-3">
+    <div className="sticky top-0 z-40 bg-background border-b border-border md:p-3">
       <div className="container mx-auto px-4">
         <nav className="flex flex-wrap items-center justify-between py-2 lg:py-0">
           
-          <div className="flex-shrink-0 w-[50px]">
-            {scrolled && (
-              <img
-                src={logo}
-                alt="Logo"
-                className="h-[50px] w-auto cursor-pointer object-contain transition-opacity duration-300"
-              />
-            )}
+        <div className="lg:flex-1 flex justify-start">
+          <div className={`flex-shrink-0 transition-all duration-300 overflow-hidden ${scrolled ? "w-[120px] mr-2" : "w-0 mr-0"}`}>
+            <img
+              src={logo}
+              alt="Logo"
+              className={`w-auto cursor-pointer object-contain transition-all duration-300 ${
+                scrolled ? "h-[40px] opacity-100" : "h-[0px] opacity-0"
+              }`}
+            />
           </div>
+        </div>
 
-          <div className="flex items-center gap-3 lg:order-last">
+          <div className="lg:flex-1 flex items-center justify-end gap-3 lg:order-last">
             
             <button
               className="flex items-center gap-1.5 bg-[#f97c2f] border border-[#f97c2f] rounded-[10px] py-2 px-3 text-white transition-transform hover:scale-105 active:scale-95"
@@ -91,14 +93,12 @@ const Navbar = () => {
 
           <div
             ref={menuRef}
-            className={`w-full lg:w-auto lg:flex-grow lg:flex lg:items-center lg:justify-center overflow-hidden transition-all duration-300 ease-in-out ${
+            className={`w-full lg:w-auto lg:flex-none lg:flex lg:items-center lg:justify-center overflow-hidden transition-all duration-300 ease-in-out ${
               isMenuOpen ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0 lg:max-h-full lg:opacity-100 lg:mt-0"
             }`}
           >
             <ul
-              className={`flex flex-col lg:flex-row gap-2 lg:gap-1 w-full lg:w-auto transition-transform duration-300 ${
-                scrolled ? "lg:ml-5" : ""
-              }`}
+              className={`flex flex-col lg:flex-row gap-2 lg:gap-1 w-full lg:w-auto transition-transform duration-300`}
             >
               <li>
                 <Link to="/" onClick={closeMenu} className={baseLinkClasses} activeProps={activeProps} inactiveProps={inactiveProps}>
