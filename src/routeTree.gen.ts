@@ -10,30 +10,30 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PublicRouteImport } from './routes/_public'
+import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as PublicIndexRouteImport } from './routes/_public.index'
-import { Route as PublicRegisterRouteImport } from './routes/_public.register'
 import { Route as PublicPromocionesRouteImport } from './routes/_public.promociones'
 import { Route as PublicPostresRouteImport } from './routes/_public.postres'
 import { Route as PublicPizzasRouteImport } from './routes/_public.pizzas'
-import { Route as PublicLoginRouteImport } from './routes/_public.login'
 import { Route as PublicLocalesRouteImport } from './routes/_public.locales'
 import { Route as PublicHamburguesasRouteImport } from './routes/_public.hamburguesas'
 import { Route as PublicExtrasRouteImport } from './routes/_public.extras'
 import { Route as PublicBebidasRouteImport } from './routes/_public.bebidas'
 import { Route as PublicAcompanamientosRouteImport } from './routes/_public.acompanamientos'
+import { Route as AuthRegisterRouteImport } from './routes/_auth.register'
+import { Route as AuthLoginRouteImport } from './routes/_auth.login'
 
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/_auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PublicIndexRoute = PublicIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => PublicRoute,
-} as any)
-const PublicRegisterRoute = PublicRegisterRouteImport.update({
-  id: '/register',
-  path: '/register',
   getParentRoute: () => PublicRoute,
 } as any)
 const PublicPromocionesRoute = PublicPromocionesRouteImport.update({
@@ -49,11 +49,6 @@ const PublicPostresRoute = PublicPostresRouteImport.update({
 const PublicPizzasRoute = PublicPizzasRouteImport.update({
   id: '/pizzas',
   path: '/pizzas',
-  getParentRoute: () => PublicRoute,
-} as any)
-const PublicLoginRoute = PublicLoginRouteImport.update({
-  id: '/login',
-  path: '/login',
   getParentRoute: () => PublicRoute,
 } as any)
 const PublicLocalesRoute = PublicLocalesRouteImport.update({
@@ -81,92 +76,105 @@ const PublicAcompanamientosRoute = PublicAcompanamientosRouteImport.update({
   path: '/acompanamientos',
   getParentRoute: () => PublicRoute,
 } as any)
+const AuthRegisterRoute = AuthRegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthLoginRoute = AuthLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => AuthRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof PublicIndexRoute
+  '/login': typeof AuthLoginRoute
+  '/register': typeof AuthRegisterRoute
   '/acompanamientos': typeof PublicAcompanamientosRoute
   '/bebidas': typeof PublicBebidasRoute
   '/extras': typeof PublicExtrasRoute
   '/hamburguesas': typeof PublicHamburguesasRoute
   '/locales': typeof PublicLocalesRoute
-  '/login': typeof PublicLoginRoute
   '/pizzas': typeof PublicPizzasRoute
   '/postres': typeof PublicPostresRoute
   '/promociones': typeof PublicPromocionesRoute
-  '/register': typeof PublicRegisterRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof PublicIndexRoute
+  '/login': typeof AuthLoginRoute
+  '/register': typeof AuthRegisterRoute
   '/acompanamientos': typeof PublicAcompanamientosRoute
   '/bebidas': typeof PublicBebidasRoute
   '/extras': typeof PublicExtrasRoute
   '/hamburguesas': typeof PublicHamburguesasRoute
   '/locales': typeof PublicLocalesRoute
-  '/login': typeof PublicLoginRoute
   '/pizzas': typeof PublicPizzasRoute
   '/postres': typeof PublicPostresRoute
   '/promociones': typeof PublicPromocionesRoute
-  '/register': typeof PublicRegisterRoute
-  '/': typeof PublicIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/_auth': typeof AuthRouteWithChildren
   '/_public': typeof PublicRouteWithChildren
+  '/_auth/login': typeof AuthLoginRoute
+  '/_auth/register': typeof AuthRegisterRoute
   '/_public/acompanamientos': typeof PublicAcompanamientosRoute
   '/_public/bebidas': typeof PublicBebidasRoute
   '/_public/extras': typeof PublicExtrasRoute
   '/_public/hamburguesas': typeof PublicHamburguesasRoute
   '/_public/locales': typeof PublicLocalesRoute
-  '/_public/login': typeof PublicLoginRoute
   '/_public/pizzas': typeof PublicPizzasRoute
   '/_public/postres': typeof PublicPostresRoute
   '/_public/promociones': typeof PublicPromocionesRoute
-  '/_public/register': typeof PublicRegisterRoute
   '/_public/': typeof PublicIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/login'
+    | '/register'
     | '/acompanamientos'
     | '/bebidas'
     | '/extras'
     | '/hamburguesas'
     | '/locales'
-    | '/login'
     | '/pizzas'
     | '/postres'
     | '/promociones'
-    | '/register'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/'
+    | '/login'
+    | '/register'
     | '/acompanamientos'
     | '/bebidas'
     | '/extras'
     | '/hamburguesas'
     | '/locales'
-    | '/login'
     | '/pizzas'
     | '/postres'
     | '/promociones'
-    | '/register'
-    | '/'
   id:
     | '__root__'
+    | '/_auth'
     | '/_public'
+    | '/_auth/login'
+    | '/_auth/register'
     | '/_public/acompanamientos'
     | '/_public/bebidas'
     | '/_public/extras'
     | '/_public/hamburguesas'
     | '/_public/locales'
-    | '/_public/login'
     | '/_public/pizzas'
     | '/_public/postres'
     | '/_public/promociones'
-    | '/_public/register'
     | '/_public/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  AuthRoute: typeof AuthRouteWithChildren
   PublicRoute: typeof PublicRouteWithChildren
 }
 
@@ -179,18 +187,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_auth': {
+      id: '/_auth'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_public/': {
       id: '/_public/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof PublicIndexRouteImport
-      parentRoute: typeof PublicRoute
-    }
-    '/_public/register': {
-      id: '/_public/register'
-      path: '/register'
-      fullPath: '/register'
-      preLoaderRoute: typeof PublicRegisterRouteImport
       parentRoute: typeof PublicRoute
     }
     '/_public/promociones': {
@@ -212,13 +220,6 @@ declare module '@tanstack/react-router' {
       path: '/pizzas'
       fullPath: '/pizzas'
       preLoaderRoute: typeof PublicPizzasRouteImport
-      parentRoute: typeof PublicRoute
-    }
-    '/_public/login': {
-      id: '/_public/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof PublicLoginRouteImport
       parentRoute: typeof PublicRoute
     }
     '/_public/locales': {
@@ -256,8 +257,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicAcompanamientosRouteImport
       parentRoute: typeof PublicRoute
     }
+    '/_auth/register': {
+      id: '/_auth/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof AuthRegisterRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/login': {
+      id: '/_auth/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof AuthLoginRouteImport
+      parentRoute: typeof AuthRoute
+    }
   }
 }
+
+interface AuthRouteChildren {
+  AuthLoginRoute: typeof AuthLoginRoute
+  AuthRegisterRoute: typeof AuthRegisterRoute
+}
+
+const AuthRouteChildren: AuthRouteChildren = {
+  AuthLoginRoute: AuthLoginRoute,
+  AuthRegisterRoute: AuthRegisterRoute,
+}
+
+const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
 
 interface PublicRouteChildren {
   PublicAcompanamientosRoute: typeof PublicAcompanamientosRoute
@@ -265,11 +292,9 @@ interface PublicRouteChildren {
   PublicExtrasRoute: typeof PublicExtrasRoute
   PublicHamburguesasRoute: typeof PublicHamburguesasRoute
   PublicLocalesRoute: typeof PublicLocalesRoute
-  PublicLoginRoute: typeof PublicLoginRoute
   PublicPizzasRoute: typeof PublicPizzasRoute
   PublicPostresRoute: typeof PublicPostresRoute
   PublicPromocionesRoute: typeof PublicPromocionesRoute
-  PublicRegisterRoute: typeof PublicRegisterRoute
   PublicIndexRoute: typeof PublicIndexRoute
 }
 
@@ -279,11 +304,9 @@ const PublicRouteChildren: PublicRouteChildren = {
   PublicExtrasRoute: PublicExtrasRoute,
   PublicHamburguesasRoute: PublicHamburguesasRoute,
   PublicLocalesRoute: PublicLocalesRoute,
-  PublicLoginRoute: PublicLoginRoute,
   PublicPizzasRoute: PublicPizzasRoute,
   PublicPostresRoute: PublicPostresRoute,
   PublicPromocionesRoute: PublicPromocionesRoute,
-  PublicRegisterRoute: PublicRegisterRoute,
   PublicIndexRoute: PublicIndexRoute,
 }
 
@@ -291,6 +314,7 @@ const PublicRouteWithChildren =
   PublicRoute._addFileChildren(PublicRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
+  AuthRoute: AuthRouteWithChildren,
   PublicRoute: PublicRouteWithChildren,
 }
 export const routeTree = rootRouteImport
