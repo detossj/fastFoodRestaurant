@@ -1,17 +1,16 @@
 import logo from "../assets/images/logo.webp"
 import { Link, useLocation } from "@tanstack/react-router"
 import { Pizza, Store, User, LogOut } from "lucide-react"
-// Importamos tu futura store de Zustand
-// import { useAuthStore } from "../stores/authStore" 
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useAuthStore } from "@/stores/useAuthStore"
 
 const TopBar = () => {
-  // const { user, logout } = useAuthStore()
+  const { user, logout } = useAuthStore()
   
   // Usamos el hook de TanStack Router para saber en qué ruta estamos
   const pathname = useLocation({ select: (location) => location.pathname })
@@ -62,7 +61,7 @@ const TopBar = () => {
             <Store size={20} /> LOCALES
           </Link>
 
-          {/* {user ? (
+          {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger 
                 className={`${baseLinkClass} outline-none ${isPerfilActive ? activeClass : inactiveClass}`}
@@ -89,16 +88,16 @@ const TopBar = () => {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-          ) : ( */}
+          ) : (
             <Link
               to="/login"
               className={`${baseLinkClass} ${isAuthActive ? activeClass : inactiveClass}`}
             >
               <User size={20} /> INGRESAR
             </Link>
-          {/* )} */}
 
-        </div>
+          )}
+        </div>  
       </div>
     </div>
   )
