@@ -5,6 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { useNavigate, Link } from '@tanstack/react-router';
+import { useAuthStore } from '@/stores/useAuthStore';
 
 const Login: React.FC = () => { 
   const [email, setEmail] = useState<string>('');
@@ -12,9 +14,26 @@ const Login: React.FC = () => {
 
   const { mutate: loginUser, isPending, isError } = useLogin();
 
+  const navigate = useNavigate();
+
   const submitLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    loginUser({ email, password });
+    
+    loginUser(
+      { email, password },
+      {
+        onSuccess: () => {
+
+          const { rol } = useAuthStore.getState();
+
+          if (rol === 'admin') {
+            navigate({ to: '/admin' as any, replace: true });
+          } else {
+            navigate({ to: '/', replace: true });
+          }
+        }
+      }
+    );
   };
 
   return (
