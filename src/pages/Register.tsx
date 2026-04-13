@@ -5,6 +5,8 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useRegister } from '@/hooks/useRegister';
+import { useAuthStore } from '@/stores/useAuthStore';
+import { useNavigate } from '@tanstack/react-router';
 
 const Register: React.FC = () => {
   const [email, setEmail] = useState<string>('');
@@ -19,6 +21,8 @@ const Register: React.FC = () => {
 
   const { mutate: registerUser, isPending, isError } = useRegister();
 
+  const navigate = useNavigate();
+
   const submitRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLocalError(null);
@@ -29,14 +33,28 @@ const Register: React.FC = () => {
       return;
     }
 
-    registerUser({ 
-      email, 
-      name, 
-      address, 
-      phone, 
-      password, 
-      password_confirmation: passwordConfirmation 
-    });
+    registerUser(
+      { 
+        email, 
+        name, 
+        address, 
+        phone, 
+        password, 
+        password_confirmation: passwordConfirmation 
+     },
+      {
+        onSuccess: () => {
+
+          const { rol } = useAuthStore.getState();
+
+          if (rol === 'admin') {
+            navigate({ to: '/admin' as any, replace: true });
+          } else {
+            navigate({ to: '/', replace: true });
+          }
+        }
+      }
+    );
   };
 
   return (
