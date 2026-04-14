@@ -17,9 +17,20 @@ export default function PromotionModal({ promotion, close }: PromotionModalProps
   const [quantity, setQuantity] = useState(1);
   const addToCart = useCartStore((state) => state.addToCart);
 
+  // Aseguramos que el precio sea numérico
+  const priceNumber = typeof promotion.price === 'string' ? parseFloat(promotion.price) : promotion.price;
+
+  // Multiplicamos el precio por la cantidad para mostrar el total en el botón
+  const total = priceNumber * quantity;
+  const formattedTotal = Math.trunc(total).toLocaleString('es-CL');
+  
+
   const handleAddToCart = () => {
     addToCart({
-      ...promotion,
+      id: promotion.id,
+      name: promotion.name,
+      price: priceNumber,
+      image_url: promotion.image_url ?? '', 
       cartType: 'promo'
     }, quantity);
     
@@ -30,12 +41,6 @@ export default function PromotionModal({ promotion, close }: PromotionModalProps
     }, 300);
   };
 
-  // Aseguramos que el precio sea numérico
-  const priceNumber = typeof promotion.price === 'string' ? parseFloat(promotion.price) : promotion.price;
-  
-  // Multiplicamos el precio por la cantidad para mostrar el total en el botón
-  const total = priceNumber * quantity;
-  const formattedTotal = Math.trunc(total).toLocaleString('es-CL');
 
   return (
     <div className="flex flex-col w-full">
