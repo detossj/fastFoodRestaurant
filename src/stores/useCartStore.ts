@@ -1,20 +1,11 @@
+import type { CartItemType } from '@/types/cart.types';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-export interface CartItem {
-  id: number | string;
-  name: string;       
-  image_url: string;
-  price: number;
-  cartType: string;
-  cartId: string; 
-  quantity: number;
-  [key: string]: any; 
-}
 
 interface CartState {
-  cart: CartItem[];
-  addToCart: (item: Omit<CartItem, 'cartId' | 'quantity'>, quantity: number) => void;
+  cart: CartItemType[];
+  addToCart: (item: Omit<CartItemType, 'cartId' | 'quantity'>, quantity: number) => void;
   increaseQty: (cartId: string) => void;
   decreaseQty: (cartId: string) => void;
   removeItem: (cartId: string) => void;
@@ -45,7 +36,7 @@ export const useCartStore = create<CartState>()(
           }
           
           return {
-            cart: [...state.cart, { ...item, cartId, quantity } as CartItem],
+            cart: [...state.cart, { ...item, cartId, quantity } as CartItemType],
           };
         });
       },
