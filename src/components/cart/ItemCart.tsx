@@ -2,14 +2,7 @@ import React from 'react';
 import { Trash2, Plus, Minus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { api_url_images } from '@/config/axiosConfig';
-
-export interface CartItemType {
-  id: string | number;
-  name: string;
-  price: number;
-  quantity: number;
-  image_url: string;
-}
+import type { CartItemType } from '@/types/cart.types';
 
 interface ItemCartProps {
   product: CartItemType;
