@@ -23,28 +23,30 @@ const ProductModal = ({ product, open, onOpenChange }: ProductModalProps) => {
   const [quantity, setQuantity] = useState<number>(1);
   const addToCart = useCartStore((state) => state.addToCart);
 
+  // Aseguramos que el precio sea numérico
+  const priceNumber = typeof product.price === 'string' ? parseFloat(product.price) : product.price;
+
+  // Multiplicamos el precio por la cantidad para mostrar el total en el botón
+  const total = priceNumber * quantity;
+  const formattedTotal = Math.trunc(total).toLocaleString('es-CL');
+  
   const handleAddToCart = () => {
     addToCart(
       {
-        ...product,
+        id: product.id,
+        name: product.name,
+        price: priceNumber,
+        image_url: product.image_url ?? '', 
         cartType: 'product',
       },
       quantity
     );
-    //toast.success("Producto agregado al carrito");
 
     setTimeout(() => {
       onOpenChange(false);
       setQuantity(1); 
     }, 300);
   };
-
-  // Aseguramos que el precio sea numérico
-  const priceNumber = typeof product.price === 'string' ? parseFloat(product.price) : product.price;
-  
-  // Multiplicamos el precio por la cantidad para mostrar el total en el botón
-  const total = priceNumber * quantity;
-  const formattedTotal = Math.trunc(total).toLocaleString('es-CL');
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
