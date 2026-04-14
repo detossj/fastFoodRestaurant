@@ -1,9 +1,10 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-
 export interface CartItem {
   id: number | string;
+  name: string;       
+  image_url: string;
   price: number;
   cartType: string;
   cartId: string; 
@@ -49,27 +50,27 @@ export const useCartStore = create<CartState>()(
         });
       },
 
-      increaseQty: (id) => {
+      increaseQty: (cartId) => {
         set((state) => ({
           cart: state.cart.map((p) =>
-            p.id === id ? { ...p, quantity: p.quantity + 1 } : p
+            p.cartId === cartId ? { ...p, quantity: p.quantity + 1 } : p
           ),
         }));
       },
 
-      decreaseQty: (id) => {
+      decreaseQty: (cartId) => {
         set((state) => ({
           cart: state.cart.map((p) =>
-            p.id === id && p.quantity > 1
+            p.cartId === cartId && p.quantity > 1
               ? { ...p, quantity: p.quantity - 1 }
               : p
           ),
         }));
       },
 
-      removeItem: (id) => {
+      removeItem: (cartId) => {
         set((state) => ({
-          cart: state.cart.filter((item) => item.id !== id),
+          cart: state.cart.filter((item) => item.cartId !== cartId),
         }));
       },
 
@@ -84,7 +85,7 @@ export const useCartStore = create<CartState>()(
       },
     }),
     {
-      name: 'cart-storage', // Nombre bajo el cual se guardará en localStorage
+      name: 'cart-storage',
     }
   )
 );
