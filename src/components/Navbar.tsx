@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { ShoppingCart, Menu, X } from "lucide-react";
 import logo from "../assets/images/logo.webp";
 import { useCartStore } from "@/stores/useCartStore";
-//import Cart from "./Cart";
+import Cart from "./cart/Cart";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -146,7 +146,7 @@ const Navbar = () => {
         </nav>
       </div>
 
-      {/* {cartOpen && <Cart onClose={() => setCartOpen(false)} />} */}
+      <Cart isOpen={cartOpen} onClose={() => setCartOpen(false)} />
     </div>
   );
 };
