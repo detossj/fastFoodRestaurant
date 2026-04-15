@@ -1,8 +1,11 @@
+import StoreList from "@/components/stores/StoreList"
 
 
 const Locales = () => {
   return (
-    <div>Locales</div>
+    <>
+      <StoreList/>
+    </>
   )
 }
 
