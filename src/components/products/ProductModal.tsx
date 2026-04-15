@@ -9,8 +9,8 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog"; 
 import { Button } from "@/components/ui/button"; 
-import type { Product } from '@/services/fastFoodRestaurantService';
 import { api_url_images } from '@/config/axiosConfig';
+import type { Product } from '@/types/product.types';
 
 
 interface ProductModalProps {
