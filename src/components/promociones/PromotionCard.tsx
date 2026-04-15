@@ -1,10 +1,10 @@
 import { api_url_images } from "@/config/axiosConfig";
-import type { Promocion } from '@/services/fastFoodRestaurantService';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import type { Promotion } from "@/types/promotion.types";
 
 interface PromotionCardProps {
-  promotion: Promocion;
+  promotion: Promotion;
   onClick: () => void; 
 }
 
