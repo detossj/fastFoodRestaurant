@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { usePromociones } from '@/hooks/usePromociones';
-import type { Promocion } from '@/services/fastFoodRestaurantService';
 import PromotionCard from './PromotionCard';
 import PromotionModal from './PromotionModal';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
+import type { Promotion } from '@/types/promotion.types';
 
 export default function PromotionsList() {
 
   const { data: promotions, isLoading, isError } = usePromociones();
   
-  const [selectedPromotion, setSelectedPromotion] = useState<Promocion | null>(null);
+  const [selectedPromotion, setSelectedPromotion] = useState<Promotion | null>(null);
 
   if (isLoading) {
     return (
