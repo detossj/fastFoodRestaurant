@@ -3,6 +3,7 @@ import type { AuthResponse, LoginCredentials, RegisterCredentials } from "@/type
 import type { Category } from "@/types/category.types";
 import type { Product } from "@/types/product.types";
 import type { Promotion } from "@/types/promotion.types";
+import type { Store } from "@/types/store.types";
 
 export const getPromociones = async (): Promise<Promotion[]> => {
     try {
@@ -60,5 +61,15 @@ export const register = async (credentials: RegisterCredentials): Promise<AuthRe
     } catch (error) {
       console.error("Error al registrarse:", error); 
       throw error;
+    }
+};
+
+export const getStores= async (): Promise<Store[]> => {
+    try {
+        const response = await api_url.get<Store[]>('/stores');
+        return response.data;
+    } catch (error) {
+        console.error("Error cargando promociones:", error);
+        throw error;
     }
 };
