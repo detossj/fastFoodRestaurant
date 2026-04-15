@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { useCartStore } from '@/stores/useCartStore';
 //import { toast } from 'react-toastify';
-import type { Promocion } from '@/services/fastFoodRestaurantService';
 import { Button } from '@/components/ui/button';
 import { DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Minus, Plus } from 'lucide-react';
 import { api_url_images } from '@/config/axiosConfig';
+import type { Promotion } from '@/types/promotion.types';
 
 
 interface PromotionModalProps {
-  promotion: Promocion;
+  promotion: Promotion;
   close: () => void;
 }
 
