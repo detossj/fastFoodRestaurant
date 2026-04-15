@@ -2,9 +2,9 @@ import { useState } from "react";
 import ProductCard from "./ProductCard";
 import ProductModal from "./ProductModal"; 
 import { useProducts } from "@/hooks/useProducts";
-import type { Product } from "@/services/fastFoodRestaurantService";
 import { useCategories } from "@/hooks/useCategories";
 import SectionHeader from "./SectionHeader";
+import type { Product } from "@/types/product.types";
 
 interface ProductsListProps {
   id: string | number;
