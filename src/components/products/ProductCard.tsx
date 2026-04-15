@@ -2,7 +2,8 @@ import React from 'react';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { api_url_images } from '@/config/axiosConfig';
-import type { Product } from '@/services/fastFoodRestaurantService';
+import type { Product } from '@/types/product.types';
+
 
 interface ProductCardProps {
   product: Product;
