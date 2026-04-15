@@ -1,65 +1,12 @@
 import api_url from "@/config/axiosConfig";
+import type { AuthResponse, LoginCredentials, RegisterCredentials } from "@/types/auth.types";
+import type { Category } from "@/types/category.types";
+import type { Product } from "@/types/product.types";
+import type { Promotion } from "@/types/promotion.types";
 
-export interface Promocion {
-  id: number;
-  name: string;
-  description?: string | null; 
-  price: string | number;
-  image_url?: string | null; 
-  available: boolean;
-  start_date: string; 
-  end_date: string;
-  created_at?: string; 
-  updated_at?: string; 
-}
-
-export interface Product {
-    id: number;
-    name: string;
-    description?: string | null; 
-    price: string | number;
-    image_url?: string | null; 
-    available: boolean;
-    category_id: number;
-    created_at?: string; 
-    updated_at?: string; 
-}
-
-export interface Category {
-    id: number;
-    name: string;
-    description?: string | null; 
-    created_at?: string; 
-    updated_at?: string; 
-}
-
-export interface LoginCredentials {
-    email: string;
-    password: string;
-}
-
-export interface AuthResponse {
-    success: boolean;
-    token: string;
-    user: {
-      id: number;
-      email: string;
-      roles: { name: string }[];
-    };
-}
-
-export interface RegisterCredentials {
-    email: string;
-    name: string;
-    address: string;
-    phone: string;
-    password: string;
-    password_confirmation: string;
-}
-
-export const getPromociones = async (): Promise<Promocion[]> => {
+export const getPromociones = async (): Promise<Promotion[]> => {
     try {
-        const response = await api_url.get<Promocion[]>('/promotions');
+        const response = await api_url.get<Promotion[]>('/promotions');
         return response.data;
     } catch (error) {
         console.error("Error cargando promociones:", error);
