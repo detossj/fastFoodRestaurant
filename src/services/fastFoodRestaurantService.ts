@@ -1,6 +1,7 @@
 import api_url from "@/config/axiosConfig";
 import type { AuthResponse, LoginCredentials, RegisterCredentials } from "@/types/auth.types";
 import type { Category } from "@/types/category.types";
+import type { Order } from "@/types/order.types";
 import type { Product } from "@/types/product.types";
 import type { Promotion } from "@/types/promotion.types";
 import type { Store } from "@/types/store.types";
@@ -71,5 +72,15 @@ export const getStores= async (): Promise<Store[]> => {
     } catch (error) {
         console.error("Error cargando promociones:", error);
         throw error;
+    }
+};
+
+export const createOrder = async (order: Order): Promise<Order> => {
+    try {
+      const response = await api_url.post<Order>('/orders', order);
+      return response.data;
+    } catch (error) {
+      console.error("Error al crear pedido:", error); 
+      throw error;
     }
 };
