@@ -49,7 +49,7 @@ const Checkout: React.FC = () => {
     try {
       if (!isLoggedIn) {
         clearCart();
-        //navigate('/redirection'); 
+        navigate({ to: '/redirection' }); 
       } else {
         // const response = await Config.createOrder(orderData);
         // if (response.status === 201 || response.status === 200) {
