@@ -3,7 +3,7 @@ import React from 'react';
 import { ShoppingBag } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-//import { useNavigate } from '@tanstack/react-router';
+import { useNavigate } from '@tanstack/react-router';
 import { useCartStore } from '@/stores/useCartStore';
 
 interface AbstractCardProps {
@@ -13,7 +13,7 @@ interface AbstractCardProps {
 }
 
 const AbstractCard: React.FC<AbstractCardProps> = ({ costoEnvio, tipoEntrega, onConfirm }) => {
-  //const navigate = useNavigate(); 
+  const navigate = useNavigate(); 
   const { cart, getTotal } = useCartStore();
   const subtotal = getTotal();
   const total = subtotal + costoEnvio;
@@ -24,7 +24,7 @@ const AbstractCard: React.FC<AbstractCardProps> = ({ costoEnvio, tipoEntrega, on
 
   const navigateToRedirection = () => {
     onConfirm();
-    // navigate('/redirection'); 
+    navigate({ to: '/redirection'}); 
 
   };
 
