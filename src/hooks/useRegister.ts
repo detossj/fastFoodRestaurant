@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
-import { register, type RegisterCredentials } from "@/services/fastFoodRestaurantService";
+import { register } from "@/services/fastFoodRestaurantService";
 import { useAuthStore } from "@/stores/useAuthStore";
+import type { RegisterCredentials } from "@/types/auth.types";
 
 
 export const useRegister = () => {
