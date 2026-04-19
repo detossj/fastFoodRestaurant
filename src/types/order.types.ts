@@ -2,7 +2,7 @@ export interface OrderItem {
     id: number;
     quantity: number;
     price: number;
-    cartype: string; 
+    cartType: string; 
 }
 
 export interface Order {
