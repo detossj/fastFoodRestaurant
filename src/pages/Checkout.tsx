@@ -7,6 +7,7 @@ import { useNavigate } from '@tanstack/react-router';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { useCartStore } from '@/stores/useCartStore';
 import CheckoutTopBar from '@/components/checkout/CheckTopbar';
+import { createOrder } from '@/services/fastFoodRestaurantService';
 
 
 const Checkout: React.FC = () => {
@@ -51,11 +52,10 @@ const Checkout: React.FC = () => {
         clearCart();
         navigate({ to: '/redirection' }); 
       } else {
-        // const response = await Config.createOrder(orderData);
-        // if (response.status === 201 || response.status === 200) {
-        //   clearCart();
-        //   navigate('/redirection'); 
-        // }
+        createOrder(orderData);
+        clearCart();
+        navigate({ to: '/redirection' }); 
+        
       }
     } catch (error: any) {
       console.error("Error al crear pedido:", error.response?.data);
