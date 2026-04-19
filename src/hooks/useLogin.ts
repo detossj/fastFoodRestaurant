@@ -1,6 +1,6 @@
 import { login } from "@/services/fastFoodRestaurantService";
-import type { LoginCredentials } from "@/services/fastFoodRestaurantService";
 import { useAuthStore } from "@/stores/useAuthStore";
+import type { LoginCredentials } from "@/types/auth.types";
 import { useMutation } from "@tanstack/react-query";
 
 
