@@ -18,6 +18,7 @@ import { Route as PublicIndexRouteImport } from './routes/_public.index'
 import { Route as PublicPromocionesRouteImport } from './routes/_public.promociones'
 import { Route as PublicPostresRouteImport } from './routes/_public.postres'
 import { Route as PublicPizzasRouteImport } from './routes/_public.pizzas'
+import { Route as PublicPedidosRouteImport } from './routes/_public.pedidos'
 import { Route as PublicLocalesRouteImport } from './routes/_public.locales'
 import { Route as PublicHamburguesasRouteImport } from './routes/_public.hamburguesas'
 import { Route as PublicExtrasRouteImport } from './routes/_public.extras'
@@ -69,6 +70,11 @@ const PublicPizzasRoute = PublicPizzasRouteImport.update({
   path: '/pizzas',
   getParentRoute: () => PublicRoute,
 } as any)
+const PublicPedidosRoute = PublicPedidosRouteImport.update({
+  id: '/pedidos',
+  path: '/pedidos',
+  getParentRoute: () => PublicRoute,
+} as any)
 const PublicLocalesRoute = PublicLocalesRouteImport.update({
   id: '/locales',
   path: '/locales',
@@ -117,6 +123,7 @@ export interface FileRoutesByFullPath {
   '/extras': typeof PublicExtrasRoute
   '/hamburguesas': typeof PublicHamburguesasRoute
   '/locales': typeof PublicLocalesRoute
+  '/pedidos': typeof PublicPedidosRoute
   '/pizzas': typeof PublicPizzasRoute
   '/postres': typeof PublicPostresRoute
   '/promociones': typeof PublicPromocionesRoute
@@ -133,6 +140,7 @@ export interface FileRoutesByTo {
   '/extras': typeof PublicExtrasRoute
   '/hamburguesas': typeof PublicHamburguesasRoute
   '/locales': typeof PublicLocalesRoute
+  '/pedidos': typeof PublicPedidosRoute
   '/pizzas': typeof PublicPizzasRoute
   '/postres': typeof PublicPostresRoute
   '/promociones': typeof PublicPromocionesRoute
@@ -151,6 +159,7 @@ export interface FileRoutesById {
   '/_public/extras': typeof PublicExtrasRoute
   '/_public/hamburguesas': typeof PublicHamburguesasRoute
   '/_public/locales': typeof PublicLocalesRoute
+  '/_public/pedidos': typeof PublicPedidosRoute
   '/_public/pizzas': typeof PublicPizzasRoute
   '/_public/postres': typeof PublicPostresRoute
   '/_public/promociones': typeof PublicPromocionesRoute
@@ -170,6 +179,7 @@ export interface FileRouteTypes {
     | '/extras'
     | '/hamburguesas'
     | '/locales'
+    | '/pedidos'
     | '/pizzas'
     | '/postres'
     | '/promociones'
@@ -186,6 +196,7 @@ export interface FileRouteTypes {
     | '/extras'
     | '/hamburguesas'
     | '/locales'
+    | '/pedidos'
     | '/pizzas'
     | '/postres'
     | '/promociones'
@@ -203,6 +214,7 @@ export interface FileRouteTypes {
     | '/_public/extras'
     | '/_public/hamburguesas'
     | '/_public/locales'
+    | '/_public/pedidos'
     | '/_public/pizzas'
     | '/_public/postres'
     | '/_public/promociones'
@@ -282,6 +294,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicPizzasRouteImport
       parentRoute: typeof PublicRoute
     }
+    '/_public/pedidos': {
+      id: '/_public/pedidos'
+      path: '/pedidos'
+      fullPath: '/pedidos'
+      preLoaderRoute: typeof PublicPedidosRouteImport
+      parentRoute: typeof PublicRoute
+    }
     '/_public/locales': {
       id: '/_public/locales'
       path: '/locales'
@@ -352,6 +371,7 @@ interface PublicRouteChildren {
   PublicExtrasRoute: typeof PublicExtrasRoute
   PublicHamburguesasRoute: typeof PublicHamburguesasRoute
   PublicLocalesRoute: typeof PublicLocalesRoute
+  PublicPedidosRoute: typeof PublicPedidosRoute
   PublicPizzasRoute: typeof PublicPizzasRoute
   PublicPostresRoute: typeof PublicPostresRoute
   PublicPromocionesRoute: typeof PublicPromocionesRoute
@@ -364,6 +384,7 @@ const PublicRouteChildren: PublicRouteChildren = {
   PublicExtrasRoute: PublicExtrasRoute,
   PublicHamburguesasRoute: PublicHamburguesasRoute,
   PublicLocalesRoute: PublicLocalesRoute,
+  PublicPedidosRoute: PublicPedidosRoute,
   PublicPizzasRoute: PublicPizzasRoute,
   PublicPostresRoute: PublicPostresRoute,
   PublicPromocionesRoute: PublicPromocionesRoute,
