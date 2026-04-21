@@ -18,6 +18,7 @@ import { Route as PublicIndexRouteImport } from './routes/_public.index'
 import { Route as PublicPromocionesRouteImport } from './routes/_public.promociones'
 import { Route as PublicPostresRouteImport } from './routes/_public.postres'
 import { Route as PublicPizzasRouteImport } from './routes/_public.pizzas'
+import { Route as PublicPerfilRouteImport } from './routes/_public.perfil'
 import { Route as PublicPedidosRouteImport } from './routes/_public.pedidos'
 import { Route as PublicLocalesRouteImport } from './routes/_public.locales'
 import { Route as PublicHamburguesasRouteImport } from './routes/_public.hamburguesas'
@@ -68,6 +69,11 @@ const PublicPostresRoute = PublicPostresRouteImport.update({
 const PublicPizzasRoute = PublicPizzasRouteImport.update({
   id: '/pizzas',
   path: '/pizzas',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicPerfilRoute = PublicPerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
   getParentRoute: () => PublicRoute,
 } as any)
 const PublicPedidosRoute = PublicPedidosRouteImport.update({
@@ -124,6 +130,7 @@ export interface FileRoutesByFullPath {
   '/hamburguesas': typeof PublicHamburguesasRoute
   '/locales': typeof PublicLocalesRoute
   '/pedidos': typeof PublicPedidosRoute
+  '/perfil': typeof PublicPerfilRoute
   '/pizzas': typeof PublicPizzasRoute
   '/postres': typeof PublicPostresRoute
   '/promociones': typeof PublicPromocionesRoute
@@ -141,6 +148,7 @@ export interface FileRoutesByTo {
   '/hamburguesas': typeof PublicHamburguesasRoute
   '/locales': typeof PublicLocalesRoute
   '/pedidos': typeof PublicPedidosRoute
+  '/perfil': typeof PublicPerfilRoute
   '/pizzas': typeof PublicPizzasRoute
   '/postres': typeof PublicPostresRoute
   '/promociones': typeof PublicPromocionesRoute
@@ -160,6 +168,7 @@ export interface FileRoutesById {
   '/_public/hamburguesas': typeof PublicHamburguesasRoute
   '/_public/locales': typeof PublicLocalesRoute
   '/_public/pedidos': typeof PublicPedidosRoute
+  '/_public/perfil': typeof PublicPerfilRoute
   '/_public/pizzas': typeof PublicPizzasRoute
   '/_public/postres': typeof PublicPostresRoute
   '/_public/promociones': typeof PublicPromocionesRoute
@@ -180,6 +189,7 @@ export interface FileRouteTypes {
     | '/hamburguesas'
     | '/locales'
     | '/pedidos'
+    | '/perfil'
     | '/pizzas'
     | '/postres'
     | '/promociones'
@@ -197,6 +207,7 @@ export interface FileRouteTypes {
     | '/hamburguesas'
     | '/locales'
     | '/pedidos'
+    | '/perfil'
     | '/pizzas'
     | '/postres'
     | '/promociones'
@@ -215,6 +226,7 @@ export interface FileRouteTypes {
     | '/_public/hamburguesas'
     | '/_public/locales'
     | '/_public/pedidos'
+    | '/_public/perfil'
     | '/_public/pizzas'
     | '/_public/postres'
     | '/_public/promociones'
@@ -292,6 +304,13 @@ declare module '@tanstack/react-router' {
       path: '/pizzas'
       fullPath: '/pizzas'
       preLoaderRoute: typeof PublicPizzasRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/perfil': {
+      id: '/_public/perfil'
+      path: '/perfil'
+      fullPath: '/perfil'
+      preLoaderRoute: typeof PublicPerfilRouteImport
       parentRoute: typeof PublicRoute
     }
     '/_public/pedidos': {
@@ -372,6 +391,7 @@ interface PublicRouteChildren {
   PublicHamburguesasRoute: typeof PublicHamburguesasRoute
   PublicLocalesRoute: typeof PublicLocalesRoute
   PublicPedidosRoute: typeof PublicPedidosRoute
+  PublicPerfilRoute: typeof PublicPerfilRoute
   PublicPizzasRoute: typeof PublicPizzasRoute
   PublicPostresRoute: typeof PublicPostresRoute
   PublicPromocionesRoute: typeof PublicPromocionesRoute
@@ -385,6 +405,7 @@ const PublicRouteChildren: PublicRouteChildren = {
   PublicHamburguesasRoute: PublicHamburguesasRoute,
   PublicLocalesRoute: PublicLocalesRoute,
   PublicPedidosRoute: PublicPedidosRoute,
+  PublicPerfilRoute: PublicPerfilRoute,
   PublicPizzasRoute: PublicPizzasRoute,
   PublicPostresRoute: PublicPostresRoute,
   PublicPromocionesRoute: PublicPromocionesRoute,
