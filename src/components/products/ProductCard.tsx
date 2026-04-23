@@ -29,12 +29,12 @@ const ProductCard = ({ product, onClick }: ProductCardProps) => {
         />
       </div>
 
-      <CardContent className="flex-1 flex flex-col p-4 pt-5">
+      <CardContent className="flex-1 flex flex-col md:p-4 pt-2 md:pt-5">
         <h5 className="font-bold text-center text-lg leading-tight">
           {product.name}
         </h5>
         
-        <p className="text-muted-foreground text-center text-sm mt-3 line-clamp-3">
+        <p className="text-muted-foreground text-center text-sm pt-2 md:mt-3 line-clamp-3">
           {product.description ?? 'Sin descripción disponible.'}
         </p>
       </CardContent>
