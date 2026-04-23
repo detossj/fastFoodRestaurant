@@ -41,18 +41,19 @@ export default function ProductsList({ id }: ProductsListProps) {
   };
 
   return (
-    <div className="container mx-auto min-h-screen px-8 py-5">
+    <div className="container mx-auto px-8 py-5">
 
-        <SectionHeader name={categories?.name || "Cargando..."} description={categories?.description} />
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {products?.map((product) => (
-                <ProductCard
-                key={product.id} 
-                product={product} 
-                onClick={(e) => showModal(e, product)} 
-                />
-            ))}
+      <SectionHeader name={categories?.name || "Cargando..."} description={categories?.description} />
+        <div className="container mx-auto px-8 md:px-18 pb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {products?.map((product) => (
+                  <ProductCard
+                  key={product.id} 
+                  product={product} 
+                  onClick={(e) => showModal(e, product)} 
+                  />
+              ))}
+          </div>
         </div>
         
         {selectedProduct && (
