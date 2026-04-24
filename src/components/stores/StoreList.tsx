@@ -1,9 +1,18 @@
 import React from 'react';
 import StoreCard from './StoreCard';
 import { useStores } from '@/hooks/useStores';
+import Loadingbar from '../Loadingbar';
+
+
 
 const StoreList: React.FC = () => {
-  const { data: stores } = useStores();
+  const { data: stores, isLoading } = useStores();
+
+  if (isLoading) {
+    return (
+      <Loadingbar />
+    );
+  }
 
   return (
     <div className="container mx-auto px-4 py-8 min-h-screen max-w-5xl">
