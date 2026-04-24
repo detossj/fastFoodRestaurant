@@ -1,6 +1,9 @@
 import React from 'react';
 import OrderCard from './OrderCard';
 import { useGetOrders } from '@/hooks/useOrder';
+import Loadingbar from '../Loadingbar';
+
+
 
 const OrderList: React.FC = () => {
 
@@ -10,9 +13,7 @@ const OrderList: React.FC = () => {
     <div className="container mx-auto p-5 min-h-screen">
       <div className="flex flex-col gap-6 items-center">
         {isLoading ? (
-          <h4 className="text-muted-foreground text-center mt-10 text-lg">
-            Cargando pedidos...
-          </h4>
+          <Loadingbar/>
         ) : pedidos?.length === 0 ? (
           <h4 className="text-muted-foreground text-center mt-10 text-lg">
             No tienes pedidos actualmente.
