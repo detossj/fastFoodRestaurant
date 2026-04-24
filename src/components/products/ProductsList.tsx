@@ -5,6 +5,8 @@ import { useProducts } from "@/hooks/useProducts";
 import { useCategories } from "@/hooks/useCategories";
 import SectionHeader from "./SectionHeader";
 import type { Product } from "@/types/product.types";
+import Loadingbar from "../Loadingbar";
+
 
 interface ProductsListProps {
   id: string | number;
@@ -20,9 +22,7 @@ export default function ProductsList({ id }: ProductsListProps) {
 
   if (loadingProducts || loadingCategories) {
     return (
-      <div className="flex justify-center items-center h-64 text-gray-500">
-        Cargando productos...
-      </div>
+      <Loadingbar/>
     );
   }
 
