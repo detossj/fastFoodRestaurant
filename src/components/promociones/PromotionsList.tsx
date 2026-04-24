@@ -4,6 +4,10 @@ import PromotionCard from './PromotionCard';
 import PromotionModal from './PromotionModal';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import type { Promotion } from '@/types/promotion.types';
+import Loadingbar from '../Loadingbar';
+
+
+
 
 export default function PromotionsList() {
 
@@ -13,9 +17,7 @@ export default function PromotionsList() {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-64 text-gray-500">
-        Cargando promociones increíbles...
-      </div>
+      <Loadingbar/>
     );
   }
 
